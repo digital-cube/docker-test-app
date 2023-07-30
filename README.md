@@ -2,6 +2,16 @@
 
 ### Table of content
 
++ [Structure of the project](#structure-of-the-project)
++ [Installing project on empty virtual machine](#installing-project-on-empty-virtual-machine)
+  - [Bootstrapping host virtual machine](#bootstrapping-host-virtual-machine)
+  - [Login to VM and install docker / docker-compose and this project](#login-to-vm-and-install-docker---docker-compose-and-this-project)
+  - [Install Docker](#install-docker)
+  - [Add user to docker group](#add-user-to-docker-group)
+  - [Install docker compose](#install-docker-compose)
+  - [Install and run application](#install-and-run-application)
+
+
 ## Introduction
 
 The goal of this project is to describe the procedure for running a simple microservice-oriented project written in Python, along with its frontend written in Angular and Vanilla JS.
