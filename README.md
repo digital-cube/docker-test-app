@@ -64,7 +64,8 @@ usermod -a -G sudo user
 
 Install Docker 
 
-More details about this installation you can find on https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04
+More details about this installation you can find at
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-22-04
 
 ```bash
 apt install apt-transport-https ca-certificates curl software-properties-common
@@ -84,7 +85,8 @@ Install docker compose
 
 Docker compose plugin will be installed on users account
 
-more details about this installation you can find at https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04
+more details about this installation you can find at 
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-22-04
 
 ```bash
 su - user
