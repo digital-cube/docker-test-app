@@ -1,8 +1,8 @@
 # Simple test service
 
-### Table of conent
+### Table of content
 
-## Introducion
+## Introduction
 
 The goal of this project is to describe the procedure for running a simple microservice-oriented project written in Python, along with its frontend written in Angular and Vanilla JS.
 
@@ -24,7 +24,7 @@ The first step is to describe and run the program using docker-compose.
 For documentation purposes, I am using DigitalOcean as the VM provider. However, please note that this procedure is almost the same for any other provider. I am also using the latest Ubuntu
 LTS (at the moment, version 22.04) and providing instructions for Docker installation on this OS. The steps may vary slightly for other Unix systems, but the overall process remains similar.
 
-1. Bootstrapping host virtual machine
+#### Bootstrapping host virtual machine
 
 To create a virtual machine on your DigitalOcean account, follow these steps:
 
@@ -42,7 +42,7 @@ To create a virtual machine on your DigitalOcean account, follow these steps:
 - DigitalOcean will now create your virtual machine with the specified configuration. Once the creation process is complete, 
 - You can then access your virtual machine using SSH (or other methods) and proceed with the rest of the installation and setup for your microservice-oriented project.
 
-2. Login to VM and install docker / docker-compose and this project
+#### Login to VM and install docker / docker-compose and this project
 
 for example IP of this machine is 10.135.18.221
 ```bash
@@ -62,7 +62,7 @@ adduser user
 usermod -a -G sudo user
 ```
 
-Install Docker 
+#### Install Docker 
 
 More details about this installation you can find at
 
@@ -77,12 +77,12 @@ apt-cache policy docker-ce
 sudo apt install docker-ce -y
 ```
 
-Add user to docker group
+#### Add user to docker group
 ```bash
 usermod -aG docker user
 ```
 
-Install docker compose
+#### Install docker compose
 
 Docker compose plugin will be installed on users account
 
@@ -106,7 +106,7 @@ To make this script executable, use the following command:
 chmod +x ~/.docker/cli-plugins/docker-compose
 ```
 
-### Install and run application
+#### Install and run application
 ```
 su - users
 git clone https://github.com/digital-cube/docker-test-app.git
