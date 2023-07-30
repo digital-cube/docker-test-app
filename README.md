@@ -107,14 +107,32 @@ chmod +x ~/.docker/cli-plugins/docker-compose
 su - users
 git clone https://github.com/digital-cube/docker-test-app.git
 cd docker-test-app
-
-```
 ```
 
+setup environments by copying and editing env file
+
+In the .env file, set up the port, username, password, and database name, or leave them as default values. 
+
+Remember not to push the .env file to .git as it contains specific installation credentials (this file is .gitignored)
+
+```bash
+cp .env.sample .env
+```
+
+Build docker images
+```bash
 docker compose build
+```
+
+Start docker images
+```bash
 docker compose up -d
 ```
 
+follow logs in logs/app
+```bash
+tail -f logs/app/app.log
+```
 you can find log in logs/app/
 
 also you should be able to access to web application using browser at
