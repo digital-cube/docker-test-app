@@ -144,7 +144,7 @@ docker compose up -d
 
 follow logs in logs/app
 ```bash
-tail -f logs/app/app.log
+tail -f logs/app.log
 ```
 you can find log in logs/app/
 
