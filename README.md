@@ -118,7 +118,6 @@ chmod +x ~/.docker/cli-plugins/docker-compose
 
 #### Install and run application
 ```
-su - users
 git clone https://github.com/digital-cube/docker-test-app.git
 cd docker-test-app
 ```
