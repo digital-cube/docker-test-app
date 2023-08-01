@@ -10,9 +10,7 @@ services:
       - POSTGRES_DB=$POSTGRES_DB
   
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile.app
+    image: igorjeremic/testapp
 
     environment:
       - POSTGRES_HOST=db
@@ -27,13 +25,10 @@ services:
       - ./logs:/var/log/app/
 
   nginx:
-    build:
-      context: .
-      dockerfile: Dockerfile.nginx
+    image: igorjeremic/testnginx
     
     depends_on:
       - app
 
     ports:
       - $NGINX_EXPOSED_ON:80
-

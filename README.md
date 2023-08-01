@@ -3,6 +3,7 @@
 ### Table of content
 
 + [Structure of the project](#structure-of-the-project)
++ [Installing project using_dockerhub](#installing-using-dockerhub)
 + [Installing project on empty virtual machine](#installing-project-on-empty-virtual-machine)
   - [Bootstrapping host virtual machine](#bootstrapping-host-virtual-machine)
   - [Login to VM and install docker / docker-compose and this project](#login-to-vm-and-install-docker---docker-compose-and-this-project)
@@ -17,6 +18,66 @@
 The goal of this project is to describe the procedure for running a simple microservice-oriented project written in Python, along with its frontend written in Angular and Vanilla JS.
 
 The first step is to describe and run the program using docker-compose.
+
+### Installing using dockerhub
+
+The project described below can be installed without building Docker images, using pre-built images already pushed on DockerHub. To do this, you can follow the steps below:
+
+Create a docker-compose.yaml file with the following content:
+
+```yaml
+services:
+
+  db:
+    restart: always
+    image: postgres
+    
+    environment:
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - POSTGRES_DB=$POSTGRES_DB
+  
+  app:
+    image: igorjeremic/testapp
+
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+      - POSTGRES_DB=$POSTGRES_DB
+
+    depends_on:
+      - db
+
+    volumes:
+      - ./logs:/var/log/app/
+
+  nginx:
+    image: igorjeremic/testnginx
+    
+    depends_on:
+      - app
+
+    ports:
+      - $NGINX_EXPOSED_ON:80
+```
+
+Create a .env file and populate it with the following information:
+
+```.env
+NGINX_EXPOSED_ON=8822
+POSTGRES_DB=db
+POSTGRES_USER=app
+POSTGRES_PASSWORD=xyz
+```
+
+Run the project by executing the following command in your terminal:
+
+```bash
+docker compose up -d
+```
+
+This command will start the containers in detached mode, meaning they will run in the background. The PostgreSQL database, the application container, and the Nginx container will be up and running, and the application should be accessible at http://localhost:8822.
 
 ### Structure of the project
 
