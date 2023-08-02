@@ -115,9 +115,9 @@ To create a virtual machine on your DigitalOcean account, follow these steps:
 
 #### Login to VM and install docker / docker-compose and this project
 
-for example IP of this machine is 10.135.18.221
+for example IP of this machine is aa.bb.cc.dd
 ```bash
-ssh root@10.135.18.221
+ssh root@aa.bb.cc.dd
 ```
 
 Update and upgrade your server to apply latest OS updates
@@ -211,4 +211,4 @@ you can find log in logs/app/
 
 also you should be able to access to web application using browser at
 
-http://10.135.18.221:8080
+http://aa.bb.cc.dd:8822
