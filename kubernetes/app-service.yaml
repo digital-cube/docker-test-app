@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: app-service
 spec:
-  type: LoadBalancer #ukloni kasnije da ne bi backend ne bi bio dostupan spolja
+  type: ClusterIP
   selector:
     app: app
   ports:
