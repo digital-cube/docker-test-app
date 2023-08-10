@@ -2,6 +2,15 @@ FROM nginx
 
 WORKDIR /web
 
+RUN apt-get update && apt-get install -y vim && rm -rf /var/lib/apt/lists/*
+
 COPY web/* /web/
 
 COPY config/nginx.conf /etc/nginx/conf.d/default.conf
+
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
+

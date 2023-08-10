@@ -1,6 +1,7 @@
 services:
 
   db:
+    container_name: db
     restart: always
     image: postgres
     
@@ -10,6 +11,7 @@ services:
       - POSTGRES_DB=$POSTGRES_DB
   
   app:
+    container_name: app
     build:
       context: .
       dockerfile: Dockerfile.app
@@ -27,6 +29,7 @@ services:
       - ./logs:/var/log/app/
 
   nginx:
+    container_name: nginx
     build:
       context: .
       dockerfile: Dockerfile.nginx
@@ -36,4 +39,7 @@ services:
 
     ports:
       - $NGINX_EXPOSED_ON:80
+
+    environment:
+      APP_HOST: "app"
 

@@ -6,6 +6,14 @@ import json
 import datetime
 import time
 import logging
+from tortoise import Tortoise, fields
+from tortoise.models import Model
+
+POSTGRES_DB=os.getenv('POSTGRES_DB')
+POSTGRES_USER=os.getenv('POSTGRES_USER')
+POSTGRES_HOST=os.getenv('POSTGRES_HOST')
+POSTGRES_PASSWORD=os.getenv('POSTGRES_PASSWORD')
+
 
 def setup_logger():
     logger = logging.getLogger('my_logger')
@@ -26,13 +34,7 @@ def setup_logger():
     
 log = setup_logger()
 
-from tortoise import Tortoise, fields
-from tortoise.models import Model
 
-POSTGRES_DB=os.getenv('POSTGRES_DB')
-POSTGRES_USER=os.getenv('POSTGRES_USER')
-POSTGRES_HOST=os.getenv('POSTGRES_HOST')
-POSTGRES_PASSWORD=os.getenv('POSTGRES_PASSWORD')
 
 TORTOISE_ORM = {
     "connections": {
