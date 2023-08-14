@@ -212,3 +212,100 @@ you can find log in logs/app/
 also you should be able to access to web application using browser at
 
 http://aa.bb.cc.dd:8822
+
+
+---
+
+# Deploying Application on Minikube
+
+This guide will walk you through the process of setting up Minikube, installing necessary dependencies, and deploying an application on a Kubernetes cluster running locally via Minikube.
+
+## Installation Steps
+
+### 1. Install Dependencies
+
+Before you install Minikube, ensure that you have `virtualbox` installed:
+
+Ubuntu:
+```bash
+sudo apt update
+sudo apt-get install virtualbox
+```
+[installation tutorial for macOS](https://www.virtualbox.org/wiki/Downloads)
+
+### 2. Install Minikube
+
+Ubuntu:
+```bash
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+sudo dpkg -i minikube_latest_amd64.deb
+```
+[Installation tutorial for macOS](https://minikube.sigs.k8s.io/docs/start/)
+
+### 3. Install kubectl
+
+`kubectl` is a command-line tool for interacting with Kubernetes clusters. Download and install it:
+
+Ubuntu:
+```bash
+snap install kubectl --classic
+kubectl version --client
+```
+[Installation tutorial for macOS](https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/)
+
+### 4. Start Minikube
+
+Initialize a Minikube cluster:
+
+```bash
+minikube start --driver=virtualbox
+```
+
+This will set up a single-node Kubernetes cluster on your local machine.
+
+### 5. Deploying the Application
+
+With Minikube running, you can create kubernetes resources using the script
+
+```bash
+./create_kubernetes_resources.sh
+```
+
+Check if resources are created and if pods are ready:
+
+```bash
+kubectl get pods
+```
+
+
+```bash
+NAME                                   READY   STATUS    RESTARTS   AGE
+app-deployment-6d9f8f7df7-ls5kx        1/1     Running   0          2m13s
+frontend-deployment-6955cbf458-4zc5b   1/1     Running   0          2m12s
+postgres-deployment-76c545898-bv799    1/1     Running   0          2m13s
+```
+if all pods have status "Running" application is ready, you can start it using the script
+
+```bash
+./start.sh
+```
+
+## Cleanup
+
+To stop Minikube:
+
+```bash
+minikube stop
+```
+
+To delete the Minikube cluster:
+
+```bash
+minikube delete
+```
+
+## Conclusion
+
+You've now set up Minikube and deployed an application on a local Kubernetes cluster. This setup is ideal for local development and testing. For production deployments, consider a managed Kubernetes service or a dedicated Kubernetes cluster.
+
+---
