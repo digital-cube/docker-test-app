@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: acast83/igor-frontend
+          image: digitalcube/test-app-frontend
           env:
             - name: APP_HOST
               value: app-service

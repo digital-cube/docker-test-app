@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: acast83/igor-app
+          image: digitalcube/test-app-backend 
           envFrom:
             - secretRef:
                 name: secret-envs
