@@ -257,6 +257,11 @@ kubectl version --client
 
 Initialize a Minikube cluster:
 
+depending on virtualization create new cluster with 
+```bash
+minikube start --driver=docker
+```
+or
 ```bash
 minikube start --driver=virtualbox
 ```
