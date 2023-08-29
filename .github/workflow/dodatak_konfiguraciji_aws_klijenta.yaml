@@ -1,0 +1,27 @@
+
+deploy_to_eks:
+  needs: build_and_push
+  runs-on: ubuntu-latest
+
+  steps:
+  - name: Checkout code
+    uses: actions/checkout@v2
+
+  - name: Configure AWS CLI
+    run: |
+      aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+      aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      aws configure set region us-west-1
+
+  - name: Setup KUBECONFIG
+    run: |
+      echo "${{ secrets.EKS_KUBECONFIG }}" > kubeconfig.yaml
+      export KUBECONFIG=kubeconfig.yaml
+
+  - name: Update Image and Deploy Service1
+    run: |
+      kubectl set image deployment/service1-deployment service1=service1:${{ github.sha }}
+
+  - name: Update Image and Deploy Service2
+    run: |
+      kubectl set image deployment/service2-deployment service2=service2:${{ github.sha }}

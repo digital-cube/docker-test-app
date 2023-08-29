@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: digitalcube/test-app-backend 
+          image: acast83/test-app-backend
           envFrom:
             - secretRef:
                 name: secret-envs
