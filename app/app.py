@@ -74,17 +74,7 @@ class MainHandler(tornado.web.RequestHandler):
 class DBHandler(tornado.web.RequestHandler):
     async def get(self):
         result = [row.data for row in await TestModel.filter().all()]
-        out = []
-        from datetime import datetime
-        for dt in result:
-            # Convert the original string to a datetime object
-            original_datetime = datetime.strptime(dt, '%Y-%m-%d %H:%M:%S')
-
-            # Convert the datetime object to a string in the new format
-            new_str = original_datetime.strftime('%-d.%b.%Y %H:%M:%S')
-            out.append(str(new_str))
-        log.debug(f'GET table-content has been triggered, returning {len(result)} rows')
-        self.write(json.dumps({"rows": out}))
+        self.write(json.dumps({"rows": result}))
 
     async def post(self):
         item = TestModel(data=str(datetime.datetime.now()))
