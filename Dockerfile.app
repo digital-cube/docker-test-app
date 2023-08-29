@@ -8,7 +8,7 @@ COPY app /app
 RUN apt update -y
 RUN apt upgrade -y
 
-RUN apt install postgresql-client
+RUN apt install postgresql-client -y
 
 RUN pip install --upgrade pip
 RUN pip install wheel tornado tortoise-orm asyncpg
